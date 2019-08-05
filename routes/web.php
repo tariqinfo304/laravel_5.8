@@ -226,4 +226,12 @@ Route::resource("crud","CRUDController");
 /////////////////////////////////////////////
 //Dependency Injection & Controllers
 
-Route::get("user_list","InjectionController@get_list");
+//Route::get("user_list","InjectionController@get_list");
+
+
+////////////////////////////////
+////////// view ///////////////
+//////////////////////////////
+
+Route::get("/simple_blade","BladeController@simple");
+Route::get("/blade_lect_1","BladeController@lec_1");
