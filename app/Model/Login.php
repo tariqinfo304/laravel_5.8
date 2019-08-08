@@ -28,4 +28,8 @@ class Login{
 		echo "Username is : " . $this->login;
 		echo "<br/> Password is : " . $this->password;
 	}
+	function show()
+	{
+		echo"its a service";
+	}
 }

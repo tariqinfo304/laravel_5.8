@@ -235,3 +235,15 @@ Route::resource("crud","CRUDController");
 
 Route::get("/simple_blade","BladeController@simple");
 Route::get("/blade_lect_1","BladeController@lec_1");
+
+
+/////////////////////////////////////
+//////////////// Database //////////
+///////////////////////////////////
+
+Route::get("db_route","DBController@db_index");
+
+/////////////////////////////
+/////////// query Builder ///
+//////////////////////////////
+Route::get("db_query_builder",'QueryBuilerController@query');
