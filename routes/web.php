@@ -247,3 +247,9 @@ Route::get("db_route","DBController@db_index");
 /////////// query Builder ///
 //////////////////////////////
 Route::get("db_query_builder",'QueryBuilerController@query');
+
+////////////////////////////////
+/////////////// ORM ///////////
+///////////////////////////////
+Route::get("orm_list","ORMController@index");
+
