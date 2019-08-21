@@ -9,6 +9,7 @@
     <button>Child</button>
     <p>This nav bar is appended to the master sidebar by child view .</p>
      @parent
+
 @endsection
 
 
@@ -24,6 +25,7 @@
 
 	<p>Here is child left-bar will show<p>
         @parent
+        
 @endsection
 
 

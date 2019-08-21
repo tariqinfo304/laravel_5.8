@@ -253,3 +253,12 @@ Route::get("db_query_builder",'QueryBuilerController@query');
 ///////////////////////////////
 Route::get("orm_list","ORMController@index");
 
+//////////////////////////////////
+//////////// Food Website in Laravel
+////////////////////////////////////
+
+Route::get("food/home","FoodController@index");
+Route::get('/register_user','FoodController@register_view');
+Route::post('/register_save','FoodController@register_save');
+Route::get("/user_list","FoodController@user_list");
+
