@@ -76,6 +76,10 @@
 		          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
 		           <li class="nav-item"><a href="{{ url('register_user') }}" class="nav-link">Register USer</a></li>
 		           <li class="nav-item"><a href="{{ url('user_list') }}" class="nav-link">User List</a></li>
+		           
+		           <li class="nav-item"><a href="{{ url('add_shop') }}" class="nav-link">Shop Add</a></li>
+		           <li class="nav-item"><a href="{{ url('shop_list') }}" class="nav-link">Shop List</a></li>
+
 		          <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 		        </ul>
 		      </div>
@@ -119,7 +123,6 @@
 		      </div>
 		    </div>
 	    </section>
-
   	@show
 
   	{{-- Here every view will write code here --}}

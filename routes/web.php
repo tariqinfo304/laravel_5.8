@@ -10,15 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 //////////////////////////////
 //simple route 
+/*
 Route::get("/",function(){
 	echo "Home<br/>";
 });
-
+*/
 
 ////////////////////////////////
 //param routes//
@@ -257,8 +255,15 @@ Route::get("orm_list","ORMController@index");
 //////////// Food Website in Laravel
 ////////////////////////////////////
 
-Route::get("food/home","FoodController@index");
+Route::get("/","FoodController@index");
 Route::get('/register_user','FoodController@register_view');
 Route::post('/register_save','FoodController@register_save');
 Route::get("/user_list","FoodController@user_list");
 
+
+/////////////////////////////////
+///////// Shop ////////
+
+Route::get("add_shop",'ShopController@shop_form');
+Route::post("add_shop_data","ShopController@add");
+Route::get("shop_list","ShopController@list");

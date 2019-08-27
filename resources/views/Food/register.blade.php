@@ -2,20 +2,25 @@
 
 @section("slider")
 @endsection
+
+
 @section("body-content")
 
 <div class="container">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
-    <form class="form-horizontal" method="POST" action="{{ url('register_save') }}" role="form">
+    @if ($errors->any())
+
+   {{-- @php dd($errors); @endphp --}}
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ url('register_save') }}" role="form">
     	@csrf()
         <h2>Registration</h2>
         <div class="form-group">
@@ -90,6 +95,11 @@
         <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
                 <span class="help-block">*Required fields</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="file" name="file_attach"/>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Register</button>

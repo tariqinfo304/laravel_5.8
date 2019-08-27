@@ -11,40 +11,48 @@ class FoodController extends Controller
 {
     function index()
     {
-    	$data['phone_no'] = "0303-4672394";
-    	$data['email']  = "evs@gmail.com";
-    	$data['address'] = "Lahore";
-
-    	return view('Food/index',["data" => $data]);
+    	return view('Food/index',["phone_no" =>"0303-4672394"
+            ,"email" => "evs@gmail.com","address" => "Lahore"]);
     }
 
     function register_view()
     {
     	return view('Food/register');
     }
+
+
     function register_save(Request $request)//RegisterUser
     {
+       // echo "<pre>";
     	//dd($request);
-    	//$uri = $request->path();
-    	//$url = $request->url();
-    	//$url = $request->fullUrl()
-    	//$input = $request->all();
+    //	echo $request->path() ."<br/>";
+    //	echo  $request->url()."<br/>";;
+    	//echo $request->fullUrl()."<br/>";
+    	
+       // print_r( $request->all());
     	//$input = $request->input();
-    	//$method = $request->method();
-    	//$request->isMethod('post')
-    	//$name = $request->query('name');
+    	
+       // echo $request->method();
+    	//echo $request->isMethod('post');
+    	//echo $name = $request->query('name');
     	//$name = $request->query('name', 'Helen');
-    	//$name = $request->input('first_name', 'xyz');
-    	//$name = $request->name;
+    	//echo $request->input('name1', 'xyz');
+    	//echo $name = $request->name;
 
-    	/*
-			$input = $request->only(['username', 'password']);
+       
 
+    	
+			//print_r($request->only(['name', 'password']));
+/*
 $input = $request->only('username', 'password');
 
-$input = $request->except(['credit_card']);
+$input = $request->except(['email']);
 
-$input = $request->except('credit_card');
+$input = $request->except('email');
+
+if ($request->has('name1')) {
+    die("ok");
+}
 if ($request->has('name')) {
     //
 }
@@ -53,14 +61,20 @@ if ($request->has(['name', 'email'])) {
 }
 
     	*/
+
 //nullable 
 	   
+       
        /*
     	$validatedData = $request->validate([
             'name' => 'required|max:255',
             'height' => 'required',
-            'date' => 'date'
-        ]);*/
+            'date' => 'required'
+        ]);
+    */
+
+
+
         //Check Request Folder class 
 
 
@@ -87,12 +101,14 @@ if ($request->has(['name', 'email'])) {
 
         */
 
+        /*
         //rule//
         $validatedData = $request->validate([
             'name' => ['required', 'string', new Uppercase],
             'height' => 'required',
             'date' => 'date'
-        ]);
+        ]);*/
+
 
 
     	$name = $request->input('name');
@@ -116,7 +132,51 @@ if ($request->has(['name', 'email'])) {
     	$user->height = $height;
     	$user->weight = $weight;
     	$user->gender = $gender;
+
     	$user->save();
+        return redirect('user_list');
+
+        //die();
+
+        ///file handling //
+        
+        if ($request->hasFile('file_attach')) {
+            
+            if ($request->file('file_attach')->isValid()) {
+
+
+                /*
+                $file = $request->file('file_attach');
+                
+                echo $request->file_attach->path();
+                echo "<br/>";
+                var_dump($request->file_attach->extension()). "<br/>";
+
+                die("ok");
+                */
+                //$path = $request->file_attach->store("images");
+               // echo $request->file_attach->path();;
+                $ext =  $request->file_attach->extension();
+                $name = "file_".rand().".".$ext;
+                /*
+                if($ext)
+                    $name = "file_".rand().".".$ext;
+                else
+                    $name = "file_".rand();
+                    */
+
+                $path = $request->file_attach->storeAs("images",$name );
+                die( $path);
+            }   
+        }
+        else
+        {
+            die("no");
+        }
+
+      
+
+
 
     	return redirect('user_list');
     }
