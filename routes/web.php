@@ -267,3 +267,17 @@ Route::get("/user_list","FoodController@user_list");
 Route::get("add_shop",'ShopController@shop_form');
 Route::post("add_shop_data","ShopController@add");
 Route::get("shop_list","ShopController@list");
+
+
+///////////////////////////
+// ORM relationship
+/////////////////////////////
+
+Route::get("one_to_one","OrmAdvanceController@one_to_one");
+Route::get("one_to_many","OrmAdvanceController@one_to_many");
+Route::get("many_to_many","OrmAdvanceController@many_to_many");
+
+
+
+
+Route::get("eager_loading","OrmAdvanceController@eager_loading");
