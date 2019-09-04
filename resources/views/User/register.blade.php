@@ -14,7 +14,7 @@
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-                <input name="name" type="text" id="Name" placeholder="Name" class="form-control" autofocus>
+                <input name="name" value="{{ old('name') }}" type="text" id="Name" placeholder="Name" class="form-control" autofocus>
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

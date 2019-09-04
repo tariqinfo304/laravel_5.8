@@ -16,6 +16,13 @@ class UserMiddleware
     public function handle($request, Closure $next)
     {
         
+        if(!session("username"))
+        {
+
+            return redirect("login");
+        }
+
+
         /*
         echo "User Middleware";
         die();
@@ -28,8 +35,8 @@ class UserMiddleware
         
 */
           
-          $next($request);
-        dd($request->input());
+        //  $next($request);
+        //dd($request->input());
          
         
 

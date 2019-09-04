@@ -90,6 +90,9 @@
 		           
 		           <li class="nav-item"><a href="{{ url('add_shop') }}" class="nav-link">Shop Add</a></li>
 		           <li class="nav-item"><a href="{{ url('shop_list') }}" class="nav-link">Shop List</a></li>
+
+		           <li class="nav-item"><a href="{{ url('cart_list') }}" class="nav-link">Cart List</a></li>
+
 		           <li class="nav-item"><a href="{{ url('user_add_form') }}" class="nav-link">Middleware</a></li>
   					<li class="nav-item"><a href="{{ url('logout') }}" class="nav-link">Logout</a></li>
 

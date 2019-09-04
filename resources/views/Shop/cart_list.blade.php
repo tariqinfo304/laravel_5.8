@@ -10,18 +10,17 @@
 			<table class="table table-hover">
 			    <thead>
 			        <tr>
-			            <th>Name</th>
-			            <th>Location</th>
-			            <th>Phone No.</th>
+			            <th>Customer name</th>
+			            <th>Product Name</th>
+			            <th>Edit</th>
+			            <th>Delete</th>
 			        </tr>
 			    </thead>
 			    <tbody>
 			    	@foreach($data as $row)
 			    		<tr >
+				            <td>{{ $row->username }}</td>
 				            <td>{{ $row->name }}</td>
-				            <td>{{ $row->location }}</td>
-				            <td>{{ $row->phone_no }}</td>
-				            <td><button type="button"><a href="{{ url('add_cart',['id'=>$row->shop_id])}}"> Cart </a></button></td>
 				            <td><button type="button"> Edit</button></td>
 				            <td><button type="button">Delete</button></td>
 			        </tr>

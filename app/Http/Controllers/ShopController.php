@@ -4,9 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\ShopModel;
+use App\Model\CartModel;
+
+use DB;
 
 class ShopController extends Controller
 {
+
+
+    function cart_list()
+    {
+        $list = DB::table("cart")
+        ->join("users","users.id","=","cart.user_id")
+        ->join("shop","shop.shop_id","=","cart.product_id")
+        ->get();
+
+
+        return view("Shop.cart_list",["data" => $list]);
+
+    }
+    function add_cart($p_id)
+    {
+        
+        $cart = new CartModel();
+        $cart->user_id = session("id");
+        $cart->product_id = $p_id;
+        $cart->save();
+
+        return redirect("cart_list");
+
+    }
     function shop_form()
     {	
         if(session("username"))

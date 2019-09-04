@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use App\Model\UserModel;
 
 class SessionController extends Controller
 {
@@ -21,13 +21,36 @@ class SessionController extends Controller
             'password' => 'required|min:3',
         ]);
 
-  		if ($validator->fails()) {
+  		  if ($validator->fails()) {
             return redirect('login')
                         ->withErrors($validator)
                         ->withInput();
         }
 
-        session(['username' => $request->username]);
+
+        $user = UserModel::where("username",$request->username)
+                    ->where("password",$request->password)
+                    ->get();
+
+
+
+        if(!empty($user) && isset($user[0]->username))
+        {
+          session(['username' => $user[0]->username,
+
+                  "id" => $user[0]->id]);
+        }
+        else
+        {
+           return redirect('login')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+
+
+
+        
 
         return redirect("/");
 

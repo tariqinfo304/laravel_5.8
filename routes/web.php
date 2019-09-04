@@ -251,56 +251,65 @@ Route::get("db_query_builder",'QueryBuilerController@query');
 ///////////////////////////////
 Route::get("orm_list","ORMController@index");
 
-//////////////////////////////////
-//////////// Food Website in Laravel
-////////////////////////////////////
+Route::group(['middleware' => ['user_group']], function () {
 
-Route::get("/","FoodController@index");
-Route::get('/register_user','FoodController@register_view');
-Route::post('/register_save','FoodController@register_save');
-Route::get("/user_list","FoodController@user_list");
+	//////////////////////////////////
+	//////////// Food Website in Laravel
+	////////////////////////////////////
 
-
-/////////////////////////////////
-///////// Shop ////////
-
-Route::get("add_shop",'ShopController@shop_form');
-Route::post("add_shop_data","ShopController@add");
-Route::get("shop_list","ShopController@list");
+	Route::get("/","FoodController@index");
+	Route::get('/register_user','FoodController@register_view');
+	Route::post('/register_save','FoodController@register_save');
+	Route::get("/user_list","FoodController@user_list");
 
 
-///////////////////////////
-// ORM relationship
-/////////////////////////////
+	/////////////////////////////////
+	///////// Shop ////////
 
-Route::get("one_to_one","OrmAdvanceController@one_to_one");
-Route::get("one_to_many","OrmAdvanceController@one_to_many");
-Route::get("many_to_many","OrmAdvanceController@many_to_many");
-
-Route::get("eager_loading","OrmAdvanceController@eager_loading");
+	Route::get("add_shop",'ShopController@shop_form');
+	Route::post("add_shop_data","ShopController@add");
+	Route::get("shop_list","ShopController@list");
 
 
-////////////////////////////////
-// Middleware /////////////////
-///////////////////////////////
+	///////////////////////////
+	// ORM relationship
+	/////////////////////////////
 
-Route::get("user_add_form","UserController@user_add_view");
+	Route::get("one_to_one","OrmAdvanceController@one_to_one");
+	Route::get("one_to_many","OrmAdvanceController@one_to_many");
+	Route::get("many_to_many","OrmAdvanceController@many_to_many");
 
-Route::post("user_add","UserController@user_add")
-	->middleware("user");
-	/*
-	Route::get('/', function (){})->middleware('first', 'second');
-	*/
+	Route::get("eager_loading","OrmAdvanceController@eager_loading");
 
 
+	////////////////////////////////
+	// Middleware /////////////////
+	///////////////////////////////
 
-/////////////////////////////
-	/// Session //////
-	////////////
+	Route::get("user_add_form","UserController@user_add_view");
+
+	Route::post("user_add","UserController@user_add")
+		->middleware("user");
+		/*
+		Route::get('/', function (){})->middleware('first', 'second');
+		*/
+
+
+
+	/////////////////////////////
+		/// Session //////
+		////////////
+
+	
+	Route::post("do_login","SessionController@do_login");
+	Route::get("logout","SessionController@logout");
+
+	Route::get("add_cart/{id}","ShopController@add_cart");
+
+	Route::get("cart_list","ShopController@cart_list");
+  
+});
 
 Route::get("login","SessionController@login");
 Route::post("do_login","SessionController@do_login");
-Route::get("logout","SessionController@logout");
-
-
 
