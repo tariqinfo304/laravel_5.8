@@ -54,6 +54,17 @@
 
 	  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		    <div class="container">
+
+		    	@if(!session("username"))
+		    	
+		    		<li class="nav-item"><a href="{{ url('login') }}" class="nav-link">Login</a></li>
+		    	
+		    	@else
+		    	
+
+
+
+
 		      <a class="navbar-brand" href="index.php">Vegefoods</a>
 		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="oi oi-menu"></span> Menu
@@ -79,10 +90,14 @@
 		           
 		           <li class="nav-item"><a href="{{ url('add_shop') }}" class="nav-link">Shop Add</a></li>
 		           <li class="nav-item"><a href="{{ url('shop_list') }}" class="nav-link">Shop List</a></li>
+		           <li class="nav-item"><a href="{{ url('user_add_form') }}" class="nav-link">Middleware</a></li>
+  					<li class="nav-item"><a href="{{ url('logout') }}" class="nav-link">Logout</a></li>
 
 		          <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 		        </ul>
 		      </div>
+		  
+		       @endif
 		    </div>
 		</nav>
   	@show

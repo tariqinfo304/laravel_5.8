@@ -277,7 +277,30 @@ Route::get("one_to_one","OrmAdvanceController@one_to_one");
 Route::get("one_to_many","OrmAdvanceController@one_to_many");
 Route::get("many_to_many","OrmAdvanceController@many_to_many");
 
-
-
-
 Route::get("eager_loading","OrmAdvanceController@eager_loading");
+
+
+////////////////////////////////
+// Middleware /////////////////
+///////////////////////////////
+
+Route::get("user_add_form","UserController@user_add_view");
+
+Route::post("user_add","UserController@user_add")
+	->middleware("user");
+	/*
+	Route::get('/', function (){})->middleware('first', 'second');
+	*/
+
+
+
+/////////////////////////////
+	/// Session //////
+	////////////
+
+Route::get("login","SessionController@login");
+Route::post("do_login","SessionController@do_login");
+Route::get("logout","SessionController@logout");
+
+
+

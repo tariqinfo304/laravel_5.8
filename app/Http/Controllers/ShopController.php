@@ -9,11 +9,19 @@ class ShopController extends Controller
 {
     function shop_form()
     {	
+        if(session("username"))
+        {
+            return view("Shop.shop_form");
+        }
+        else
+        {
+            return redirect("/login");
+        }
 
 //API //
     //	$shop = new ShopModel();
     	//echo json_encode($shop->get());
-    	return view("Shop.shop_form");
+    	
 
     }
     function add(Request $request)
