@@ -29,7 +29,9 @@ class RouteServiceProvider extends ServiceProvider
             'edit' => 'editar',
         ]);*/
 
-        //Route::pattern('id', '[0-9]+');
+        //Route::pattern('id', '[1-3]+');
+
+
         parent::boot();
     }
 

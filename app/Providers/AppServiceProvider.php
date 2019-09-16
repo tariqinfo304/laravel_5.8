@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
-
+//migration
+use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //for migration setting //
+        Schema::defaultStringLength(191);
+        //end //
         //use Illuminate\Support\Facades\Blade; 
         //it's necessary to add this at top of page 
         Blade::component("EVS.alert","alert");

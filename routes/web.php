@@ -10,13 +10,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/*
+Route::get("/",function(){
+
+	return view("welcome");
+});
+*/
+
 //////////////////////////////
 //simple route 
-/*
+
 Route::get("/",function(){
 	echo "Home<br/>";
 });
-*/
+
+
+Route::get("/sultan/{id}",function($id){
+
+	echo $id;
+
+});
 
 ////////////////////////////////
 //param routes//
@@ -43,10 +57,11 @@ route::get("/validation/{id}/{name}",function($id,$name){
 
 	echo $id . " name : " . $name;
 })
-//->where('id','[1-9]'); //accpet only one length digit
+->where('id','[1-9]'); //accpet only one length digit
 //->where('id','[1-9]+'); //accept multiple digits
-->where(['id' => '[1-5]+']);
-//->where(['id' => '1|2|3','name' => "[a-zA-Z]+"]);
+
+//->where(['id' => '[1-5]+']);
+//->where(['id' => '123|222|333','name' => "[a-zA-Z-0-9-' '-'!']+"]);
 //->where(["id" => "[1-5]{4}","name" => "[a-z]+"]);
 //25202-0340608-9
 //->where(["id" => "[0-9]{5}-[0-9]{7}-[0-9]{1}"]);
@@ -66,11 +81,11 @@ If you would like a route parameter to always be constrained by a given regular 
  });
 */
 
-/*
+
 /////////////////////////////////////////
  //Encoded Forward Slashes
 Route::get('search/{search}', function ($search) {
-    return $search;
+    echo "Search Route " .$search;
 })->where('search', '.*');
 
 
@@ -81,6 +96,8 @@ Route::get('search/{search}', function ($search) {
 Route::redirect("/redirect","search/23",302);
 
 
+
+/*
 //it will call on very method type of http
 //OR Route::any();
 Route::match(['get','put','post','delete'],"/method",function(){
@@ -88,12 +105,30 @@ Route::match(['get','put','post','delete'],"/method",function(){
 	echo "Method allow GET,PUT,POST,DELETE";
 });
 
+
+
 //CSRF Protection//
 Route::get("/form",function(){
 	return view('test',["name" => "CSRF Token Form"]);
 });	
 
 
+*/
+
+
+
+Route::get("/sultan",function(){
+
+	echo "Nick name is Dakoo Route";
+
+
+})->name("Dakoo");
+
+
+
+Route::get("/call_dakoo",function(){
+	return redirect()->route("Dakoo");
+});
 
 /////////////////////////////////////////////
 //Named Routes
@@ -104,15 +139,17 @@ Route::get("/user/info",function(){
 
 
 
+
+
 Route::get('user/{id}/profile', function ($id) {
-    echo "It's a name route with parameter id";
+    echo "It's a name route with parameter id  : " . $id ;
 })->name('profile');
 
-Route::get("check_name_route",function(){
+Route::get("check_name_route/{id}",function($id){
 
 	//echo route("info"); 
 //	return redirect()->route("info");
-	return redirect()->route("profile",["id"=>1]);
+	return redirect()->route("profile",["id"=>$id]);
 });
 
 
@@ -135,12 +172,13 @@ Route::group(["prefix" => "user/{id}","as" => "UserInfo."],function($id){
 });
 
 
-Route::get("redirect_group",function(){
 
-	return redirect()->route("UserInfo.Remove",["id"=>23]);
+Route::get("redirect_group/{id}",function($id){
+
+	return redirect()->route("UserInfo.Remove",["id"=>$id]);
 });
 
-
+/*
 
 /////////////////////////
 //Route Prefixes
@@ -226,6 +264,7 @@ Route::resource("crud","CRUDController");
 
 //Route::get("user_list","InjectionController@get_list");
 
+/*
 
 ////////////////////////////////
 ////////// view ///////////////
@@ -290,9 +329,9 @@ Route::group(['middleware' => ['user_group']], function () {
 
 	Route::post("user_add","UserController@user_add")
 		->middleware("user");
-		/*
-		Route::get('/', function (){})->middleware('first', 'second');
-		*/
+		
+		//Route::get('/', function (){})->middleware('first', 'second');
+		
 
 
 
@@ -313,3 +352,5 @@ Route::group(['middleware' => ['user_group']], function () {
 Route::get("login","SessionController@login");
 Route::post("do_login","SessionController@do_login");
 
+
+*/
