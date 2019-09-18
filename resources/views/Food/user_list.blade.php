@@ -6,6 +6,8 @@
 @section("body-content")
 		
 	<div class="container">
+		
+		{{ $data->links() }}
 		<div class="row">
 			<table class="table table-hover">
 			    <thead>
@@ -36,6 +38,7 @@
 			    </tbody>
 			</table>
 		</div>
+		{{ $data->links() }}
 	</div>	
 
 

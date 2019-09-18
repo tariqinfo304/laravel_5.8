@@ -264,7 +264,7 @@ Route::resource("crud","CRUDController");
 
 //Route::get("user_list","InjectionController@get_list");
 
-/*
+
 
 ////////////////////////////////
 ////////// view ///////////////
@@ -352,5 +352,3 @@ Route::group(['middleware' => ['user_group']], function () {
 Route::get("login","SessionController@login");
 Route::post("do_login","SessionController@do_login");
 
-
-*/

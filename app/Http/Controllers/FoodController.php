@@ -174,16 +174,18 @@ if ($request->has(['name', 'email'])) {
             die("no");
         }
 
-      
-
-
-
     	return redirect('user_list');
     }
-    function user_list()
+    function user_list(Request $req)
     {
+        //print_r($req->session()->all());
     	$user = new UserModel();
-    	$user_list = $user->get();
+       // $user_list = $user->all();
+
+        //{ (n -1) * total_record } , total_record
+    	$user_list = $user->paginate(2);
+       // $user_list = $user->simplePaginate(2);
+       // dd($user_list);
     	return view("Food/user_list",['data' => $user_list]);
     }
 }
