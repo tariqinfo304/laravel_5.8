@@ -339,6 +339,7 @@ Route::group(['middleware' => ['user_group']], function () {
 		/// Session //////
 		////////////
 
+		/*
 	
 	Route::post("do_login","SessionController@do_login");
 	Route::get("logout","SessionController@logout");
@@ -346,9 +347,18 @@ Route::group(['middleware' => ['user_group']], function () {
 	Route::get("add_cart/{id}","ShopController@add_cart");
 
 	Route::get("cart_list","ShopController@cart_list");
-  
+  	*/
 });
 
-Route::get("login","SessionController@login");
-Route::post("do_login","SessionController@do_login");
+//Route::get("login","SessionController@login");
+//Route::post("do_login","SessionController@do_login");
 
+
+//////////////////////
+// new Auth related //
+///////////////////////
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

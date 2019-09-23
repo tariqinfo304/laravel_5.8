@@ -16,6 +16,34 @@ class SessionController extends Controller
   	function do_login(Request $request)
   	{
 
+
+      /*
+      
+       $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
+        
+
+      if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])) {
+        // The user is active, not suspended, and exists.
+      }
+
+
+      Auth::logout();
+  
+
+
+    //remember_token column exist in table
+    if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
+        // The user is being remembered...
+    } 
+
+
+      */
+
   		$validator = Validator::make($request->all(), [
             'username' => 'required|min:4|max:25',
             'password' => 'required|min:3',
@@ -46,11 +74,6 @@ class SessionController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
-
-
-
-
-        
 
         return redirect("/");
 
