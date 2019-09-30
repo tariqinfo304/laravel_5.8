@@ -40,7 +40,13 @@ class HomeController extends Controller
         */
 
 
-        //$user = new User();
+        $user = new User();
+
+        /*
+        $encrypted =  encrypt("admin");
+        echo  $encrypted ."</br>";
+        dd(decrypt($encrypted));
+    */
 
         /*
         $encrypted =  encrypt($user);
@@ -49,15 +55,16 @@ class HomeController extends Controller
         dd(decrypt($encrypted));
         */
 
+        
         /*
 
         $encrypted =  Crypt::encryptString("admin");
         echo Crypt::decryptString($encrypted);
-        
         */
         
-
+        
         /*
+        
         $hash_string = Hash::make("admin");
         
 
@@ -65,10 +72,10 @@ class HomeController extends Controller
         
         echo "<br/>";
 
-        var_dump(Hash::check('admin1', $hash_string));
+        var_dump(Hash::check('admin', $hash_string));
         
-        */
-
+        
+    */
         
 
         /*
@@ -92,11 +99,11 @@ class HomeController extends Controller
      // echo $request->user();
 
 
-        /*
+        
     if (Auth::check()) {
             echo "The user is logged in...";
         }
-        */
+        
 
         
         return view('home');
